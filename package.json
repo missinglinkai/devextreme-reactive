@@ -1,47 +1,94 @@
 {
-  "private": true,
-  "name": "devextreme-reactive",
+  "name": "@devexpress/dx-react-grid-material-ui",
+  "version": "1.2.0-beta.2",
+  "description": "Material UI templates for DevExtreme React Grid component",
   "author": {
     "name": "Developer Express Inc.",
     "url": "https://www.devexpress.com/"
   },
+  "bugs": {
+    "url": "https://github.com/DevExpress/devextreme-reactive/issues"
+  },
+  "homepage": "https://devexpress.github.io/devextreme-reactive/",
   "repository": {
     "type": "git",
     "url": "git+https://github.com/DevExpress/devextreme-reactive.git"
   },
+  "keywords": [
+    "react",
+    "data",
+    "grid",
+    "table",
+    "material",
+    "react-component"
+  ],
   "license": "SEE LICENSE IN README.md",
-  "devDependencies": {
-    "check-node-version": "^3.2.0",
-    "concurrently": "^3.5.1",
-    "conventional-changelog-cli": "^1.3.15",
-    "conventional-recommended-bump": "^2.0.6",
-    "fs-extra": "^5.0.0",
-    "gulp": "^3.9.1",
-    "gulp-clean": "^0.4.0",
-    "gulp-intercept": "^0.1.0",
-    "gulp-rename": "^1.2.2",
-    "inquirer": "^5.1.0",
-    "lerna": "2.9.0",
-    "run-sequence": "^2.2.1",
-    "semver": "^5.5.0"
+  "publishConfig": {
+    "access": "public"
   },
+  "main": "dist/dx-react-grid-material-ui.cjs.js",
+  "module": "dist/dx-react-grid-material-ui.es.js",
+  "globalName": "DevExpress.DXReactGridMaterialUI",
+  "files": [
+    "dist"
+  ],
+  "types": "dist/dx-react-grid-material-ui.d.ts",
   "scripts": {
-    "postinstall": "check-node-version --quiet --node \">=6.11.1\" --npm \">=5.3.0\" --yarn \">=1.0.0\"",
-    "build": "yarn run build:ts && lerna run build",
-    "build:ts": "node ./scripts/ts-generator.js",
-    "build:ts:watch": "nodemon --exec \"yarn build:ts\" --watch \"packages/*/docs/reference/*.md\" --watch \"scripts/ts-generator.js\" --ext md,js",
-    "build:watch": "concurrently \"yarn build:ts:watch\" \"lerna run --parallel build:watch\"",
-    "build:site": "yarn run build:site:demos && yarn run build:site:docs",
-    "build:site:demos": "yarn run build:ts && lerna run build --ignore @devexpress/dx-react-demos && lerna run build:prod --scope @devexpress/dx-react-demos",
-    "build:site:docs": "gulp site",
-    "build:site:watch": "npx nodemon --exec \"yarn run build:site:docs\" --watch \"packages/dx-react-demos/dist/\" --watch \"packages/*/docs/\" --watch \"packages/*/demos/\" --watch \"gulpfile.js\" --ext md,js",
-    "lint": "lerna run lint",
-    "lint:ci": "lerna run lint:ci",
-    "test": "lerna run test",
-    "publish:npm": "yarn && node ./scripts/publish-npm.js",
-    "publish:site": "yarn && node ./scripts/publish-site.js"
+    "test": "jest",
+    "test:watch": "jest --watch",
+    "test:coverage": "jest --coverage",
+    "build": "rollup -c rollup.config.js",
+    "build:watch": "rollup -c rollup.config.js -w",
+    "lint": "eslint \"src/**\"",
+    "lint:fix": "yarn run lint -- --fix"
   },
-  "workspaces": [
-    "packages/*"
-  ]
+  "devDependencies": {
+    "@devexpress/dx-grid-core": "1.2.0-beta.2",
+    "@devexpress/dx-react-core": "1.2.0-beta.2",
+    "@devexpress/dx-react-grid": "1.2.0-beta.2",
+    "@devexpress/dx-testing": "1.2.0-beta.2",
+    "@material-ui/icons": "1.0.0-beta.42",
+    "babel-core": "^6.26.0",
+    "babel-jest": "^22.4.3",
+    "babel-plugin-external-helpers": "^6.22.0",
+    "babel-plugin-transform-object-rest-spread": "^6.26.0",
+    "babel-plugin-transform-runtime": "^6.23.0",
+    "babel-preset-es2015": "^6.24.1",
+    "babel-preset-react": "^6.24.1",
+    "core-js": "^2.5.4",
+    "enzyme": "^3.3.0",
+    "enzyme-adapter-react-16": "^1.1.1",
+    "eslint": "^4.19.1",
+    "eslint-config-airbnb": "^16.1.0",
+    "eslint-config-airbnb-base": "^12.1.0",
+    "eslint-plugin-filenames": "^1.2.0",
+    "eslint-plugin-import": "^2.10.0",
+    "eslint-plugin-jest": "^21.15.0",
+    "eslint-plugin-jsx-a11y": "^6.0.3",
+    "eslint-plugin-react": "^7.7.0",
+    "jest": "^22.4.3",
+    "jss": "^9.8.1",
+    "jss-preset-default": "^4.3.0",
+    "jss-theme-reactor": "^0.11.1",
+    "material-ui": "1.0.0-beta.41",
+    "react": "^16.2.0",
+    "react-dom": "^16.2.0",
+    "react-test-renderer": "^16.2.0",
+    "rollup": "0.50.0",
+    "rollup-plugin-babel": "^3.0.3",
+    "rollup-plugin-license": "^0.6.0",
+    "rollup-plugin-node-resolve": "^3.2.0"
+  },
+  "dependencies": {
+    "classnames": "^2.2.5",
+    "prop-types": "^15.6.1"
+  },
+  "peerDependencies": {
+    "@devexpress/dx-grid-core": "1.2.0-beta.2",
+    "@devexpress/dx-react-core": "1.2.0-beta.2",
+    "@devexpress/dx-react-grid": "1.2.0-beta.2",
+    "@material-ui/icons": "1.0.0-beta.42",
+    "material-ui": "1.0.0-beta.41",
+    "react": "^16.2.0"
+  }
 }

@@ -1,41 +1,76 @@
-# DevExtreme Reactive
+# DevExtreme React Grid Material UI
 
-[![CircleCI](https://img.shields.io/circleci/project/github/DevExpress/devextreme-reactive/master.svg)](https://circleci.com/gh/DevExpress/devextreme-reactive)
-[![NPM](https://img.shields.io/npm/v/@devexpress/dx-core.svg)](https://www.npmjs.com/package/@devexpress/dx-core)
+A template suite used to render the React Grid based on Material UI components.
 
-## Business Components for React
+## Installation
 
-[Website](https://devexpress.github.io/devextreme-reactive/react/)
+Install the main dx-react-grid package with its dependencies and templates for the Material UI:
 
-### Main Features
+```
+npm i --save @devexpress/dx-react-core @devexpress/dx-react-grid @devexpress/dx-react-grid-material-ui
+```
 
-- Composable and extendable plugin-based architecture
-- [Bootstrap](https://github.com/react-bootstrap/react-bootstrap) and [Material UI](https://github.com/callemall/material-ui) integration with seamless theming
-- Controlled (stateless) and uncontrolled (stateful) modes
-- [Redux](https://github.com/reactjs/redux/) integration with state persistence and time-traveling
-- 100% Native React (no jQuery or other dependencies)
-- High performance via pure components, immutable state, and memoization
+Add the required modules to your project:
 
+```jsx
+import {
+  Grid, Table, TableHeaderRow
+} from '@devexpress/dx-react-grid-material-ui';
 
-### React Grid
+const App = () => (
+  <Grid
+    rows={[
+      { id: 0, product: 'DevExtreme', owner: 'DevExpress' },
+      { id: 1, product: 'DevExtreme Reactive', owner: 'DevExpress' },
+    ]}
+    columns={[
+      { name: 'id', title: 'ID' },
+      { name: 'product', title: 'Product' },
+      { name: 'owner', title: 'Owner' },
+    ]}>
+    <Table />
+    <TableHeaderRow />
+  </Grid>
+);
+```
 
-[Website](https://devexpress.github.io/devextreme-reactive/react/grid/)
-|
-[Demos](https://devexpress.github.io/devextreme-reactive/react/grid/demos/)
-|
-[Docs](https://devexpress.github.io/devextreme-reactive/react/grid/docs/)
+Make sure that the [Material UI](https://material-ui-1dab0.firebaseapp.com/) dependencies are installed and properly configured. Check the Material UI's [Getting Started](https://material-ui-1dab0.firebaseapp.com/getting-started/installation) article for configuration details.
 
-Packages:
+## Getting started
 
-- [DevExtreme React Grid](packages/dx-react-grid/README.md)
-- [DevExtreme React Grid Bootstrap3](packages/dx-react-grid-bootstrap3/README.md)
-- [DevExtreme React Grid Material UI](packages/dx-react-grid-material-ui/README.md)
-- [DevExtreme React Grid Bootstrap4](packages/dx-react-grid-bootstrap4/README.md)
+This package provides components and plugins implementing Material UI rendering for the React Grid, which you can use instead of the original React Grid package ones.
+
+See [demos](https://devexpress.github.io/devextreme-reactive/react/grid/demos/) for more information.
+
+## Reference
+
+The package exposes components and plugins with injected template components.
+
+Components:
+
+- [Grid](https://devexpress.github.io/devextreme-reactive/react/grid/docs/reference/grid/)
+
+Plugins:
+
+- [DragDropProvider](https://devexpress.github.io/devextreme-reactive/react/grid/docs/reference/drag-drop-provider/)
+- [GroupingPanel](https://devexpress.github.io/devextreme-reactive/react/grid/docs/reference/grouping-panel/)
+- [ColumnChooser](https://devexpress.github.io/devextreme-reactive/react/grid/docs/reference/column-chooser/)
+- [PagingPanel](https://devexpress.github.io/devextreme-reactive/react/grid/docs/reference/paging-panel/)
+- [Table](https://devexpress.github.io/devextreme-reactive/react/grid/docs/reference/table/)
+- [TableColumnResizing](https://devexpress.github.io/devextreme-reactive/react/grid/docs/reference/table-column-resizing/)
+- [TableColumnReordering](https://devexpress.github.io/devextreme-reactive/react/grid/docs/reference/table-column-reordering/)
+- [TableColumnVisibility](https://devexpress.github.io/devextreme-reactive/react/grid/docs/reference/table-column-visibility/)
+- [TableEditColumn](https://devexpress.github.io/devextreme-reactive/react/grid/docs/reference/table-edit-column/)
+- [TableEditRow](https://devexpress.github.io/devextreme-reactive/react/grid/docs/reference/table-edit-row/)
+- [TableFilterRow](https://devexpress.github.io/devextreme-reactive/react/grid/docs/reference/table-filter-row/)
+- [TableGroupRow](https://devexpress.github.io/devextreme-reactive/react/grid/docs/reference/table-group-row/)
+- [TableHeaderRow](https://devexpress.github.io/devextreme-reactive/react/grid/docs/reference/table-header-row/)
+- [TableRowDetail](https://devexpress.github.io/devextreme-reactive/react/grid/docs/reference/table-row-detail/)
+- [TableSelection](https://devexpress.github.io/devextreme-reactive/react/grid/docs/reference/table-selection/)
+- [TableTreeColumn](https://devexpress.github.io/devextreme-reactive/react/grid/docs/reference/table-tree-column/)
+- [Toolbar](https://devexpress.github.io/devextreme-reactive/react/grid/docs/reference/toolbar/)
+- [VirtualTable](https://devexpress.github.io/devextreme-reactive/react/grid/docs/reference/virtual-table/)
 
 ## License
 
 [DevExtreme licensing](https://js.devexpress.com/licensing/).
-
-## Support & Feedback
-
-Use [GitHub Issues](https://github.com/DevExpress/devextreme-reactive/issues) for reporting bugs, questions, and feature requests. If you own an active DevExtreme license, you can contact us at the [Support Center](https://www.devexpress.com/ask).
