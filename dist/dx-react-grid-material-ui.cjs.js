@@ -1,6 +1,6 @@
 /**
  * Bundle of @devexpress/dx-react-grid-material-ui
- * Generated: 2018-04-22
+ * Generated: 2018-04-19
  * Version: 1.2.0-beta.2
  * License: https://js.devexpress.com/Licensing
  */
@@ -747,6 +747,10 @@ PageButton.defaultProps = {
 
 var ellipsisSymbol = '\u2026';
 
+var calculateStartPage = function calculateStartPage(currentPage, maxButtonCount, totalPageCount) {
+  return Math.max(Math.min(currentPage - Math.floor(maxButtonCount / 2, 10), totalPageCount - maxButtonCount + 1), 1);
+};
+
 var renderPageButtons = function renderPageButtons(currentPage, totalPageCount, classes, onCurrentPageChange) {
   var pageButtons = [];
   var maxButtonCount = 3;
@@ -754,7 +758,7 @@ var renderPageButtons = function renderPageButtons(currentPage, totalPageCount, 
   var endPage = totalPageCount || 1;
 
   if (maxButtonCount < totalPageCount) {
-    startPage = dxGridCore.calculateStartPage(currentPage + 1, maxButtonCount, totalPageCount);
+    startPage = calculateStartPage(currentPage + 1, maxButtonCount, totalPageCount);
     endPage = startPage + maxButtonCount - 1;
   }
   if (startPage > 1) {

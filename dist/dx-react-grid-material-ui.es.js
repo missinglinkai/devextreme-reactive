@@ -1,6 +1,6 @@
 /**
  * Bundle of @devexpress/dx-react-grid-material-ui
- * Generated: 2018-04-22
+ * Generated: 2018-04-19
  * Version: 1.2.0-beta.2
  * License: https://js.devexpress.com/Licensing
  */
@@ -23,7 +23,7 @@ import Select from 'material-ui/Select';
 import Button from 'material-ui/Button';
 import ChevronLeft from '@material-ui/icons/ChevronLeft';
 import ChevronRight from '@material-ui/icons/ChevronRight';
-import { calculateStartPage, firstRowOnPage, lastRowOnPage } from '@devexpress/dx-grid-core';
+import { firstRowOnPage, lastRowOnPage } from '@devexpress/dx-grid-core';
 import TableMUI, { TableBody, TableCell, TableHead, TableRow, TableSortLabel } from 'material-ui/Table';
 import ExpandMore from '@material-ui/icons/ExpandMore';
 import ExpandLess from '@material-ui/icons/ExpandLess';
@@ -737,6 +737,10 @@ PageButton.defaultProps = {
 };
 
 var ellipsisSymbol = '\u2026';
+
+var calculateStartPage = function calculateStartPage(currentPage, maxButtonCount, totalPageCount) {
+  return Math.max(Math.min(currentPage - Math.floor(maxButtonCount / 2, 10), totalPageCount - maxButtonCount + 1), 1);
+};
 
 var renderPageButtons = function renderPageButtons(currentPage, totalPageCount, classes, onCurrentPageChange) {
   var pageButtons = [];
