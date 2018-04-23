@@ -1,3 +1,10 @@
+# INTERNAL - HOW TO UPDATE:
+1. install on other repo using yarn
+2. copy to this branch (grid-material-ui)
+3. change columnTitle decalartion on all files:
+ 3.1. columnTitle: oneOfType([object.isRequired, string.isRequired]),
+ 3.1. columnTitle: ''
+
 # DevExtreme React Grid Material UI
 
 A template suite used to render the React Grid based on Material UI components.
