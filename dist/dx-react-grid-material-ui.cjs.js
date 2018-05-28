@@ -1,7 +1,7 @@
 /**
  * Bundle of @devexpress/dx-react-grid-material-ui
- * Generated: 2018-04-19
- * Version: 1.2.0-beta.2
+ * Generated: 2018-05-24
+ * Version: 1.3.0-beta.2
  * License: https://js.devexpress.com/Licensing
  */
 
@@ -14,32 +14,37 @@ function _interopDefault (ex) { return (ex && (typeof ex === 'object') && 'defau
 var React = require('react');
 var PropTypes = require('prop-types');
 var dxReactGrid = require('@devexpress/dx-react-grid');
-var Popover = _interopDefault(require('material-ui/Popover'));
-var List = require('material-ui/List');
-var List__default = _interopDefault(List);
-var IconButton = _interopDefault(require('material-ui/IconButton'));
-var Tooltip = _interopDefault(require('material-ui/Tooltip'));
+var Popover = _interopDefault(require('@material-ui/core/Popover'));
+var List = _interopDefault(require('@material-ui/core/List'));
+var IconButton = _interopDefault(require('@material-ui/core/IconButton'));
+var Tooltip = _interopDefault(require('@material-ui/core/Tooltip'));
 var VisibilityOff = _interopDefault(require('@material-ui/icons/VisibilityOff'));
-var Checkbox = _interopDefault(require('material-ui/Checkbox'));
+var ListItem = _interopDefault(require('@material-ui/core/ListItem'));
+var ListItemText = _interopDefault(require('@material-ui/core/ListItemText'));
+var Checkbox = _interopDefault(require('@material-ui/core/Checkbox'));
 var classNames = _interopDefault(require('classnames'));
-var Chip = _interopDefault(require('material-ui/Chip'));
-var styles = require('material-ui/styles');
-var Input = require('material-ui/Input');
-var Input__default = _interopDefault(Input);
-var Menu = require('material-ui/Menu');
-var Select = _interopDefault(require('material-ui/Select'));
-var Button = _interopDefault(require('material-ui/Button'));
+var Chip = _interopDefault(require('@material-ui/core/Chip'));
+var styles = require('@material-ui/core/styles');
+var Input = _interopDefault(require('@material-ui/core/Input'));
+var MenuItem = _interopDefault(require('@material-ui/core/MenuItem'));
+var Select = _interopDefault(require('@material-ui/core/Select'));
+var Button = _interopDefault(require('@material-ui/core/Button'));
 var ChevronLeft = _interopDefault(require('@material-ui/icons/ChevronLeft'));
 var ChevronRight = _interopDefault(require('@material-ui/icons/ChevronRight'));
 var dxGridCore = require('@devexpress/dx-grid-core');
-var TableMUI = require('material-ui/Table');
-var TableMUI__default = _interopDefault(TableMUI);
+var TableSortLabel = _interopDefault(require('@material-ui/core/TableSortLabel'));
+var TableCell = _interopDefault(require('@material-ui/core/TableCell'));
 var ExpandMore = _interopDefault(require('@material-ui/icons/ExpandMore'));
 var ExpandLess = _interopDefault(require('@material-ui/icons/ExpandLess'));
+var TableRowMUI = _interopDefault(require('@material-ui/core/TableRow'));
+var TableBody = _interopDefault(require('@material-ui/core/TableBody'));
+var TableHead = _interopDefault(require('@material-ui/core/TableHead'));
+var TableMUI = _interopDefault(require('@material-ui/core/Table'));
 var dxReactCore = require('@devexpress/dx-react-core');
 var List$1 = _interopDefault(require('@material-ui/icons/List'));
-var colorManipulator = require('material-ui/styles/colorManipulator');
-var Toolbar$1 = _interopDefault(require('material-ui/Toolbar'));
+var colorManipulator = require('@material-ui/core/styles/colorManipulator');
+var Toolbar$1 = _interopDefault(require('@material-ui/core/Toolbar'));
+var InputAdornment = _interopDefault(require('@material-ui/core/InputAdornment'));
 var Search = _interopDefault(require('@material-ui/icons/Search'));
 
 var asyncGenerator = function () {
@@ -333,7 +338,7 @@ var Container = function Container(_ref) {
   var children = _ref.children,
       restProps = objectWithoutProperties(_ref, ['children']);
   return React.createElement(
-    List__default,
+    List,
     _extends({
       dense: true
     }, restProps),
@@ -388,7 +393,7 @@ var Item = function Item(_ref) {
       onToggle = _ref.onToggle,
       restProps = objectWithoutProperties(_ref, ['item', 'disabled', 'onToggle']);
   return React.createElement(
-    List.ListItem,
+    ListItem,
     _extends({
       key: column.name,
       button: !disabled,
@@ -402,7 +407,7 @@ var Item = function Item(_ref) {
       disabled: disabled,
       style: { width: 'auto', height: 'auto' }
     }),
-    React.createElement(List.ListItemText, { primary: column.title || column.name })
+    React.createElement(ListItemText, { primary: column.title || column.name })
   );
 };
 
@@ -477,8 +482,6 @@ var styles$1 = function styles$$1(theme) {
       display: 'inline-block'
     },
     column: {
-      paddingTop: theme.spacing.unit,
-      paddingBottom: theme.spacing.unit,
       paddingLeft: theme.spacing.unit * 2,
       paddingRight: theme.spacing.unit * 2,
       float: 'right',
@@ -635,14 +638,14 @@ var PageSizeSelectorBase = function PageSizeSelectorBase(_ref) {
         classes: {
           icon: classes.selectIcon
         },
-        input: React.createElement(Input__default, {
+        input: React.createElement(Input, {
           disableUnderline: true,
           classes: { root: classes.inputRoot }
         })
       },
       pageSizes.map(function (item) {
         return React.createElement(
-          Menu.MenuItem,
+          MenuItem,
           { key: item, value: item },
           item !== 0 ? item : showAll
         );
@@ -747,10 +750,6 @@ PageButton.defaultProps = {
 
 var ellipsisSymbol = '\u2026';
 
-var calculateStartPage = function calculateStartPage(currentPage, maxButtonCount, totalPageCount) {
-  return Math.max(Math.min(currentPage - Math.floor(maxButtonCount / 2, 10), totalPageCount - maxButtonCount + 1), 1);
-};
-
 var renderPageButtons = function renderPageButtons(currentPage, totalPageCount, classes, onCurrentPageChange) {
   var pageButtons = [];
   var maxButtonCount = 3;
@@ -758,7 +757,7 @@ var renderPageButtons = function renderPageButtons(currentPage, totalPageCount, 
   var endPage = totalPageCount || 1;
 
   if (maxButtonCount < totalPageCount) {
-    startPage = calculateStartPage(currentPage + 1, maxButtonCount, totalPageCount);
+    startPage = dxGridCore.calculateStartPage(currentPage + 1, maxButtonCount, totalPageCount);
     endPage = startPage + maxButtonCount - 1;
   }
   if (startPage > 1) {
@@ -1049,7 +1048,7 @@ var styles$6 = function styles$$1(theme) {
 var label = function label(showSortingControls, sortingEnabled, sortingDirection, column) {
   var title = column.title || column.name;
   return showSortingControls ? React.createElement(
-    TableMUI.TableSortLabel,
+    TableSortLabel,
     {
       active: !!sortingDirection,
       direction: sortingDirection === null ? undefined : sortingDirection,
@@ -1130,7 +1129,9 @@ var GroupPanelItem = styles.withStyles(styles$6, { name: 'GroupPanelItem' })(Gro
 var styles$7 = function styles$$1(theme) {
   return {
     groupInfo: {
-      color: theme.typography.title.color
+      color: theme.typography.caption.color,
+      fontFamily: theme.typography.fontFamily,
+      fontSize: theme.typography.fontSize
     }
   };
 };
@@ -1241,7 +1242,7 @@ var TableDetailToggleCellBase = function TableDetailToggleCellBase(_ref) {
     onToggle();
   };
   return React.createElement(
-    TableMUI.TableCell,
+    TableCell,
     _extends({
       className: classNames(classes.toggleCell, className),
       style: style
@@ -1252,7 +1253,7 @@ var TableDetailToggleCellBase = function TableDetailToggleCellBase(_ref) {
         className: classes.toggleCellButton,
         onClick: handleClick
       },
-      expanded ? React.createElement(ExpandMore, null) : React.createElement(ExpandLess, null)
+      expanded ? React.createElement(ExpandLess, null) : React.createElement(ExpandMore, null)
     )
   );
 };
@@ -1265,7 +1266,7 @@ TableDetailToggleCellBase.propTypes = {
   className: PropTypes.string,
   tableColumn: PropTypes.object,
   tableRow: PropTypes.object,
-  row: PropTypes.object
+  row: PropTypes.any
 };
 
 TableDetailToggleCellBase.defaultProps = {
@@ -1299,7 +1300,7 @@ var TableDetailCellBase = function TableDetailCellBase(_ref) {
       row = _ref.row,
       restProps = objectWithoutProperties(_ref, ['colSpan', 'style', 'children', 'classes', 'className', 'tableColumn', 'tableRow', 'row']);
   return React.createElement(
-    TableMUI.TableCell,
+    TableCell,
     _extends({
       style: style,
       colSpan: colSpan,
@@ -1317,7 +1318,7 @@ TableDetailCellBase.propTypes = {
   className: PropTypes.string,
   tableColumn: PropTypes.object,
   tableRow: PropTypes.object,
-  row: PropTypes.object
+  row: PropTypes.any
 };
 
 TableDetailCellBase.defaultProps = {
@@ -1332,27 +1333,27 @@ TableDetailCellBase.defaultProps = {
 
 var TableDetailCell = styles.withStyles(styles$9, { name: 'TableDetailCell' })(TableDetailCellBase);
 
-var TableRow$1 = function TableRow$$1(_ref) {
+var TableRow = function TableRow(_ref) {
   var children = _ref.children,
       row = _ref.row,
       tableRow = _ref.tableRow,
       tableColumn = _ref.tableColumn,
       restProps = objectWithoutProperties(_ref, ['children', 'row', 'tableRow', 'tableColumn']);
   return React.createElement(
-    TableMUI.TableRow,
+    TableRowMUI,
     restProps,
     children
   );
 };
 
-TableRow$1.propTypes = {
+TableRow.propTypes = {
   children: PropTypes.node,
-  row: PropTypes.object,
+  row: PropTypes.any,
   tableRow: PropTypes.object,
   tableColumn: PropTypes.object
 };
 
-TableRow$1.defaultProps = {
+TableRow.defaultProps = {
   children: undefined,
   row: undefined,
   tableRow: undefined,
@@ -1373,7 +1374,7 @@ var TableRowDetail$1 = function (_React$PureComponent) {
       return React.createElement(dxReactGrid.TableRowDetail, _extends({
         toggleCellComponent: TableDetailToggleCell,
         cellComponent: TableDetailCell,
-        rowComponent: TableRow$1,
+        rowComponent: TableRow,
         toggleColumnWidth: 48
       }, this.props));
     }
@@ -1383,7 +1384,7 @@ var TableRowDetail$1 = function (_React$PureComponent) {
 
 TableRowDetail$1.Cell = TableDetailCell;
 TableRowDetail$1.ToggleCell = TableDetailToggleCell;
-TableRowDetail$1.Row = TableRow$1;
+TableRowDetail$1.Row = TableRow;
 
 var styles$10 = function styles$$1(theme) {
   return {
@@ -1428,7 +1429,7 @@ var TableGroupCellBase = function TableGroupCellBase(_ref) {
   };
 
   return React.createElement(
-    TableMUI.TableCell,
+    TableCell,
     _extends({
       colSpan: colSpan,
       style: style,
@@ -1459,7 +1460,7 @@ var TableGroupCellBase = function TableGroupCellBase(_ref) {
 TableGroupCellBase.propTypes = {
   style: PropTypes.object,
   colSpan: PropTypes.number,
-  row: PropTypes.object,
+  row: PropTypes.any,
   column: PropTypes.object,
   expanded: PropTypes.bool,
   onToggle: PropTypes.func,
@@ -1498,7 +1499,7 @@ var TableGroupRow$1 = function (_React$PureComponent) {
     value: function render() {
       return React.createElement(dxReactGrid.TableGroupRow, _extends({
         cellComponent: TableGroupCell,
-        rowComponent: TableRow$1,
+        rowComponent: TableRow,
         indentColumnWidth: 48
       }, this.props));
     }
@@ -1506,7 +1507,7 @@ var TableGroupRow$1 = function (_React$PureComponent) {
   return TableGroupRow$$1;
 }(React.PureComponent);
 
-TableGroupRow$1.Row = TableRow$1;
+TableGroupRow$1.Row = TableRow;
 TableGroupRow$1.Cell = TableGroupCell;
 
 var styles$11 = function styles$$1(theme) {
@@ -1544,7 +1545,7 @@ var TableSelectAllCellBase = function TableSelectAllCellBase(_ref) {
   var cellClasses = classNames((_classNames = {}, defineProperty(_classNames, classes.cell, true), defineProperty(_classNames, classes.pointer, !disabled), defineProperty(_classNames, classes.alignWithRowSpan, rowSpan > 1), _classNames), className);
 
   return React.createElement(
-    TableMUI.TableCell,
+    TableCell,
     _extends({
       padding: 'checkbox',
       className: cellClasses,
@@ -1617,7 +1618,7 @@ var TableSelectCellBase = function TableSelectCellBase(_ref) {
       tableColumn = _ref.tableColumn,
       restProps = objectWithoutProperties(_ref, ['style', 'selected', 'onToggle', 'classes', 'className', 'row', 'tableRow', 'tableColumn']);
   return React.createElement(
-    TableMUI.TableCell,
+    TableCell,
     _extends({
       padding: 'checkbox',
       style: style,
@@ -1639,7 +1640,7 @@ TableSelectCellBase.propTypes = {
   selected: PropTypes.bool,
   onToggle: PropTypes.func,
   classes: PropTypes.object.isRequired,
-  row: PropTypes.object,
+  row: PropTypes.any,
   tableRow: PropTypes.object,
   tableColumn: PropTypes.object,
   className: PropTypes.string
@@ -1667,7 +1668,7 @@ var TableSelectRow = function TableSelectRow(_ref) {
       children = _ref.children,
       restProps = objectWithoutProperties(_ref, ['selected', 'selectByRowClick', 'onToggle', 'row', 'tableRow', 'tableColumn', 'children']);
   return React.createElement(
-    TableMUI.TableRow,
+    TableRowMUI,
     _extends({
       selected: selected,
       onClick: function onClick(e) {
@@ -1685,7 +1686,7 @@ TableSelectRow.propTypes = {
   onToggle: PropTypes.func,
   selected: PropTypes.bool,
   selectByRowClick: PropTypes.bool,
-  row: PropTypes.object,
+  row: PropTypes.any,
   tableColumn: PropTypes.object,
   tableRow: PropTypes.object
 };
@@ -1728,7 +1729,8 @@ TableSelection$1.HeaderCell = TableSelectAllCell;
 var styles$13 = function styles$$1(theme) {
   return {
     table: {
-      tableLayout: 'fixed'
+      tableLayout: 'fixed',
+      overflow: 'hidden'
     },
     headTable: {
       position: 'sticky',
@@ -1752,7 +1754,7 @@ var TableBase = function TableBase(_ref) {
       use = _ref.use,
       restProps = objectWithoutProperties(_ref, ['children', 'classes', 'className', 'use']);
   return React.createElement(
-    TableMUI__default,
+    TableMUI,
     _extends({
       className: classNames((_classNames = {}, defineProperty(_classNames, classes.table, true), defineProperty(_classNames, classes.headTable, use === 'head'), _classNames), className)
     }, restProps),
@@ -1819,7 +1821,7 @@ var TableCellBase = function TableCellBase(_ref) {
       className = _ref.className,
       restProps = objectWithoutProperties(_ref, ['column', 'value', 'children', 'classes', 'tableRow', 'tableColumn', 'row', 'className']);
   return React.createElement(
-    TableMUI.TableCell,
+    TableCell,
     _extends({
       className: classNames((_classNames = {}, defineProperty(_classNames, classes.cell, true), defineProperty(_classNames, classes.cellRightAlign, tableColumn && tableColumn.align === 'right'), defineProperty(_classNames, classes.cellCenterAlign, tableColumn && tableColumn.align === 'center'), defineProperty(_classNames, classes.cellNoWrap, !(tableColumn && tableColumn.wordWrapEnabled)), _classNames), className)
     }, restProps),
@@ -1830,7 +1832,7 @@ var TableCellBase = function TableCellBase(_ref) {
 TableCellBase.propTypes = {
   value: PropTypes.any,
   column: PropTypes.object,
-  row: PropTypes.object,
+  row: PropTypes.any,
   classes: PropTypes.object.isRequired,
   children: PropTypes.node,
   tableRow: PropTypes.object,
@@ -1863,7 +1865,7 @@ var TableStubCellBase = function TableStubCellBase(_ref) {
       tableRow = _ref.tableRow,
       tableColumn = _ref.tableColumn,
       restProps = objectWithoutProperties(_ref, ['style', 'classes', 'className', 'tableRow', 'tableColumn']);
-  return React.createElement(TableMUI.TableCell, _extends({
+  return React.createElement(TableCell, _extends({
     style: style,
     className: classNames(classes.cell, className)
   }, restProps));
@@ -1905,7 +1907,7 @@ var TableNoDataCellBase = function TableNoDataCellBase(_ref) {
       tableColumn = _ref.tableColumn,
       restProps = objectWithoutProperties(_ref, ['style', 'colSpan', 'getMessage', 'classes', 'className', 'tableRow', 'tableColumn']);
   return React.createElement(
-    TableMUI.TableCell,
+    TableCell,
     _extends({
       style: style,
       className: classNames(classes.cell, className),
@@ -1977,7 +1979,7 @@ var TableStubRow = function TableStubRow(_ref) {
       tableRow = _ref.tableRow,
       restProps = objectWithoutProperties(_ref, ['children', 'tableRow']);
   return React.createElement(
-    TableMUI.TableRow,
+    TableRowMUI,
     restProps,
     children
   );
@@ -2015,13 +2017,13 @@ var Table$1 = function (_React$PureComponent) {
 
       return React.createElement(dxReactGrid.Table, _extends({
         tableComponent: Table$2,
-        headComponent: TableMUI.TableHead,
-        bodyComponent: TableMUI.TableBody,
+        headComponent: TableHead,
+        bodyComponent: TableBody,
         containerComponent: TableContainer,
         layoutComponent: TableLayout$1,
-        rowComponent: TableRow$1,
+        rowComponent: TableRow,
         cellComponent: TableCell$1,
-        noDataRowComponent: TableRow$1,
+        noDataRowComponent: TableRow,
         noDataCellComponent: TableNoDataCell,
         stubRowComponent: TableStubRow,
         stubCellComponent: TableStubCell,
@@ -2034,15 +2036,15 @@ var Table$1 = function (_React$PureComponent) {
 }(React.PureComponent);
 
 Table$1.Cell = TableCell$1;
-Table$1.Row = TableRow$1;
+Table$1.Row = TableRow;
 Table$1.NoDataCell = TableNoDataCell;
-Table$1.NoDataRow = TableRow$1;
+Table$1.NoDataRow = TableRow;
 Table$1.StubRow = TableStubRow;
 Table$1.StubCell = TableStubCell;
 Table$1.StubHeaderCell = TableStubCell;
 Table$1.Table = Table$2;
-Table$1.TableHead = TableMUI.TableHead;
-Table$1.TableBody = TableMUI.TableBody;
+Table$1.TableHead = TableHead;
+Table$1.TableBody = TableBody;
 Table$1.Container = TableContainer;
 
 Table$1.propTypes = {
@@ -2112,13 +2114,13 @@ var VirtualTable = function (_React$PureComponent) {
 
       return React.createElement(dxReactGrid.Table, _extends({
         layoutComponent: this.layoutRenderComponent.component,
-        bodyComponent: TableMUI.TableBody,
-        headComponent: TableMUI.TableHead,
+        bodyComponent: TableBody,
+        headComponent: TableHead,
         tableComponent: Table$2,
         containerComponent: TableContainer,
-        rowComponent: TableRow$1,
+        rowComponent: TableRow,
         cellComponent: TableCell$1,
-        noDataRowComponent: TableRow$1,
+        noDataRowComponent: TableRow,
         noDataCellComponent: TableNoDataCell,
         stubRowComponent: TableStubRow,
         stubCellComponent: TableStubCell,
@@ -2131,14 +2133,14 @@ var VirtualTable = function (_React$PureComponent) {
 }(React.PureComponent);
 
 VirtualTable.Cell = TableCell$1;
-VirtualTable.Row = TableRow$1;
+VirtualTable.Row = TableRow;
 VirtualTable.NoDataCell = TableNoDataCell;
-VirtualTable.NoDataRow = TableRow$1;
+VirtualTable.NoDataRow = TableRow;
 VirtualTable.StubCell = TableStubCell;
 VirtualTable.StubHeaderCell = TableStubCell;
 VirtualTable.Table = Table$2;
-VirtualTable.TableHead = TableMUI.TableHead;
-VirtualTable.TableBody = TableMUI.TableBody;
+VirtualTable.TableHead = TableHead;
+VirtualTable.TableBody = TableBody;
 VirtualTable.FixedHeader = FixedHeader;
 VirtualTable.Container = TableContainer;
 VirtualTable.StubRow = TableStubRow;
@@ -2189,12 +2191,12 @@ var TableFilterCellBase = function TableFilterCellBase(_ref2) {
       filteringEnabled = _ref2.filteringEnabled,
       restProps = objectWithoutProperties(_ref2, ['style', 'filter', 'getMessage', 'onFilter', 'classes', 'children', 'className', 'tableRow', 'tableColumn', 'column', 'filteringEnabled']);
   return React.createElement(
-    TableMUI.TableCell,
+    TableCell,
     _extends({
       className: classNames(classes.cell, className),
       style: style
     }, restProps),
-    children || React.createElement(Input__default, {
+    children || React.createElement(Input, {
       className: classes.input,
       value: filter ? filter.value : '',
       placeholder: getMessage('filterPlaceholder'),
@@ -2256,7 +2258,7 @@ var TableFilterRow$1 = function (_React$PureComponent) {
 
       return React.createElement(dxReactGrid.TableFilterRow, _extends({
         cellComponent: TableFilterCell,
-        rowComponent: TableRow$1,
+        rowComponent: TableRow,
         messages: _extends({}, defaultMessages$5, messages)
       }, restProps));
     }
@@ -2265,7 +2267,7 @@ var TableFilterRow$1 = function (_React$PureComponent) {
 }(React.PureComponent);
 
 TableFilterRow$1.Cell = TableFilterCell;
-TableFilterRow$1.Row = TableRow$1;
+TableFilterRow$1.Row = TableRow;
 
 TableFilterRow$1.propTypes = {
   messages: PropTypes.shape({
@@ -2483,11 +2485,11 @@ var SortingControlBase = function SortingControlBase(_ref) {
       placement: align === 'right' ? 'bottom-end' : 'bottom-start',
       enterDelay: 300,
       classes: {
-        root: classes.tooltipRoot
+        tooltip: classes.tooltipRoot
       }
     },
     React.createElement(
-      TableMUI.TableSortLabel,
+      TableSortLabel,
       {
         active: !!sortingDirection,
         direction: sortingDirection === null ? undefined : sortingDirection,
@@ -2510,7 +2512,7 @@ var SortingControlBase = function SortingControlBase(_ref) {
 SortingControlBase.propTypes = {
   align: PropTypes.string.isRequired,
   sortingDirection: PropTypes.oneOf(['asc', 'desc', null]),
-  columnTitle: PropTypes.oneOfType([PropTypes.object.isRequired, PropTypes.string.isRequired]),
+  columnTitle: PropTypes.oneOfType([object.isRequired, string.isRequired]),
   classes: PropTypes.object.isRequired,
   onClick: PropTypes.func.isRequired,
   getMessage: PropTypes.func.isRequired,
@@ -2589,13 +2591,13 @@ var styles$19 = function styles$$1(theme) {
       flexDirection: 'row',
       alignItems: 'center'
     },
-    containerRight: {
-      flexDirection: 'row-reversed'
-    },
     content: {
       width: '100%',
       overflow: 'hidden',
       textOverflow: 'ellipsis'
+    },
+    contentRight: {
+      flexDirection: 'row-reverse'
     },
     contentNoWrap: {
       whiteSpace: 'nowrap'
@@ -2642,7 +2644,6 @@ var TableHeaderCellBase = function (_React$PureComponent) {
     value: function render() {
       var _classNames,
           _classNames2,
-          _classNames3,
           _this2 = this;
 
       var _props = this.props,
@@ -2673,10 +2674,9 @@ var TableHeaderCellBase = function (_React$PureComponent) {
       var columnTitle = column && (column.title || column.name);
 
       var tableCellClasses = classNames((_classNames = {}, defineProperty(_classNames, classes.cell, true), defineProperty(_classNames, classes.cellRight, align === 'right'), defineProperty(_classNames, classes.cellCenter, align === 'center'), defineProperty(_classNames, classes.cellNoUserSelect, draggingEnabled || showSortingControls), defineProperty(_classNames, classes.cellDraggable, draggingEnabled), defineProperty(_classNames, classes.cellDimmed, dragging || tableColumn && tableColumn.draft), _classNames), className);
-      var containerClassses = classNames((_classNames2 = {}, defineProperty(_classNames2, classes.container, true), defineProperty(_classNames2, classes.containerRight, align === 'right'), _classNames2));
-      var contentClassed = classNames((_classNames3 = {}, defineProperty(_classNames3, classes.content, true), defineProperty(_classNames3, classes.contentNoWrap, !(tableColumn && tableColumn.wordWrapEnabled)), _classNames3));
+      var contentClassed = classNames((_classNames2 = {}, defineProperty(_classNames2, classes.content, true), defineProperty(_classNames2, classes.contentNoWrap, !(tableColumn && tableColumn.wordWrapEnabled)), defineProperty(_classNames2, classes.contentRight, align === 'right'), _classNames2));
       var cellLayout = React.createElement(
-        TableMUI.TableCell,
+        TableCell,
         _extends({
           style: style,
           className: tableCellClasses,
@@ -2684,7 +2684,7 @@ var TableHeaderCellBase = function (_React$PureComponent) {
         }, restProps),
         React.createElement(
           'div',
-          { className: containerClassses },
+          { className: classes.container },
           before,
           React.createElement(
             'div',
@@ -2808,7 +2808,7 @@ var TableHeaderRow$1 = function (_React$PureComponent) {
 
       return React.createElement(dxReactGrid.TableHeaderRow, _extends({
         cellComponent: TableHeaderCell,
-        rowComponent: TableRow$1,
+        rowComponent: TableRow,
         messages: _extends({}, defaultMessages$6, messages)
       }, restProps));
     }
@@ -2817,7 +2817,7 @@ var TableHeaderRow$1 = function (_React$PureComponent) {
 }(React.PureComponent);
 
 TableHeaderRow$1.Cell = TableHeaderCell;
-TableHeaderRow$1.Row = TableRow$1;
+TableHeaderRow$1.Row = TableRow;
 
 TableHeaderRow$1.propTypes = {
   messages: PropTypes.shape({
@@ -2868,7 +2868,7 @@ var CellBase = function CellBase(_ref) {
       className = _ref.className,
       restProps = objectWithoutProperties(_ref, ['column', 'value', 'children', 'classes', 'tableRow', 'tableColumn', 'row', 'className']);
   return React.createElement(
-    TableMUI.TableCell,
+    TableCell,
     _extends({
       className: classNames(classes.cell, className)
     }, restProps),
@@ -2879,7 +2879,7 @@ var CellBase = function CellBase(_ref) {
 CellBase.propTypes = {
   value: PropTypes.any,
   column: PropTypes.object,
-  row: PropTypes.object,
+  row: PropTypes.any,
   classes: PropTypes.object.isRequired,
   children: PropTypes.node,
   tableRow: PropTypes.object,
@@ -2947,7 +2947,7 @@ var styles$25 = {
 
 var InvisibleCellBase = function InvisibleCellBase(_ref) {
   var classes = _ref.classes;
-  return React.createElement(TableMUI.TableCell, { className: classes.emptyCell });
+  return React.createElement(TableCell, { className: classes.emptyCell });
 };
 
 InvisibleCellBase.propTypes = {
@@ -2971,7 +2971,7 @@ var RowBase = function RowBase(_ref) {
       tableColumn = _ref.tableColumn,
       restProps = objectWithoutProperties(_ref, ['children', 'classes', 'className', 'row', 'tableRow', 'tableColumn']);
   return React.createElement(
-    TableMUI.TableRow,
+    TableRowMUI,
     _extends({
       className: classNames(classes.row, className)
     }, restProps),
@@ -2982,7 +2982,7 @@ var RowBase = function RowBase(_ref) {
 RowBase.propTypes = {
   classes: PropTypes.object.isRequired,
   children: PropTypes.node,
-  row: PropTypes.object,
+  row: PropTypes.any,
   tableRow: PropTypes.object,
   tableColumn: PropTypes.object,
   className: PropTypes.string
@@ -3061,12 +3061,12 @@ var EditCellBase = function EditCellBase(_ref) {
   var inputClasses = classNames((_classNames = {}, defineProperty(_classNames, classes.inputRight, tableColumn && tableColumn.align === 'right'), defineProperty(_classNames, classes.inputCenter, tableColumn && tableColumn.align === 'center'), _classNames));
 
   return React.createElement(
-    TableMUI.TableCell,
+    TableCell,
     _extends({
       className: classNames(classes.cell, className),
       style: style
     }, restProps),
-    children || React.createElement(Input__default, {
+    children || React.createElement(Input, {
       className: classes.inputRoot,
       classes: { input: inputClasses },
       value: value || '',
@@ -3080,7 +3080,7 @@ var EditCellBase = function EditCellBase(_ref) {
 
 EditCellBase.propTypes = {
   column: PropTypes.object,
-  row: PropTypes.object,
+  row: PropTypes.any,
   tableRow: PropTypes.object,
   tableColumn: PropTypes.object,
   value: PropTypes.any,
@@ -3119,7 +3119,7 @@ var TableEditRow$1 = function (_React$PureComponent) {
     value: function render() {
       return React.createElement(dxReactGrid.TableEditRow, _extends({
         cellComponent: EditCell,
-        rowComponent: TableRow$1
+        rowComponent: TableRow
       }, this.props));
     }
   }]);
@@ -3127,7 +3127,7 @@ var TableEditRow$1 = function (_React$PureComponent) {
 }(React.PureComponent);
 
 TableEditRow$1.Cell = EditCell;
-TableEditRow$1.Row = TableRow$1;
+TableEditRow$1.Row = TableRow;
 
 var styles$28 = function styles$$1(theme) {
   return {
@@ -3198,7 +3198,7 @@ var EditCommandHeadingCellBase = function EditCommandHeadingCellBase(_ref2) {
       rowSpan = _ref2.rowSpan,
       restProps = objectWithoutProperties(_ref2, ['children', 'style', 'classes', 'className', 'tableRow', 'tableColumn', 'rowSpan']);
   return React.createElement(
-    TableMUI.TableCell,
+    TableCell,
     _extends({
       className: classNames((_classNames = {}, defineProperty(_classNames, classes.headingCell, true), defineProperty(_classNames, classes.alignWithRowSpan, rowSpan > 1), _classNames), className),
       rowSpan: rowSpan
@@ -3238,7 +3238,7 @@ var EditCommandCellBase = function EditCommandCellBase(_ref3) {
       className = _ref3.className,
       restProps = objectWithoutProperties(_ref3, ['tableRow', 'tableColumn', 'row', 'children', 'style', 'classes', 'className']);
   return React.createElement(
-    TableMUI.TableCell,
+    TableCell,
     _extends({
       className: classNames(classes.cell, className),
       style: style
@@ -3254,7 +3254,7 @@ EditCommandCellBase.propTypes = {
   className: PropTypes.string,
   tableRow: PropTypes.object,
   tableColumn: PropTypes.object,
-  row: PropTypes.object
+  row: PropTypes.any
 };
 
 EditCommandCellBase.defaultProps = {
@@ -3326,7 +3326,10 @@ var styles$29 = function styles$$1(theme) {
   return {
     emptyMessage: {
       margin: '0 auto',
-      padding: theme.spacing.unit * 5 + 'px 0'
+      padding: theme.spacing.unit * 5 + 'px 0',
+      fontFamily: theme.typography.fontFamily,
+      color: theme.typography.subheading.color,
+      fontSize: theme.typography.subheading.fontSize
     }
   };
 };
@@ -3442,7 +3445,7 @@ var TableContainer$1 = function TableContainer(_ref) {
 var ReorderingRow = function ReorderingRow(_ref2) {
   var style = _ref2.style,
       restParams = objectWithoutProperties(_ref2, ['style']);
-  return React.createElement(TableRow$1, _extends({
+  return React.createElement(TableRow, _extends({
     style: _extends({}, style, {
       visibility: 'hidden'
     })
@@ -3555,10 +3558,12 @@ Toolbar$2.Root = Toolbar$3;
 var styles$31 = function styles$$1(theme) {
   return {
     button: {
-      marginTop: -theme.spacing.unit,
-      marginBottom: -theme.spacing.unit,
+      marginTop: '-1px',
+      marginBottom: '-1px',
       marginLeft: -theme.spacing.unit,
-      marginRight: theme.spacing.unit * 2
+      marginRight: theme.spacing.unit * 2,
+      width: theme.spacing.unit * 5,
+      height: theme.spacing.unit * 5
     },
     hidden: {
       cursor: 'default',
@@ -3611,10 +3616,12 @@ var TableTreeExpandButton = styles.withStyles(styles$31)(TableTreeExpandButtonBa
 var styles$32 = function styles$$1(theme) {
   return {
     checkbox: {
-      marginTop: -theme.spacing.unit,
-      marginBottom: -theme.spacing.unit,
+      marginTop: '-1px',
+      marginBottom: '-1px',
       marginRight: theme.spacing.unit * 2,
-      marginLeft: -theme.spacing.unit * 2
+      marginLeft: -theme.spacing.unit * 2,
+      width: theme.spacing.unit * 5,
+      height: theme.spacing.unit * 5
     }
   };
 };
@@ -3756,7 +3763,7 @@ var TableTreeCellBase = function TableTreeCellBase(_ref) {
       className = _ref.className,
       restProps = objectWithoutProperties(_ref, ['column', 'value', 'children', 'classes', 'tableRow', 'tableColumn', 'row', 'className']);
   return React.createElement(
-    TableMUI.TableCell,
+    TableCell,
     _extends({
       className: classNames(defineProperty({}, classes.cell, true), className)
     }, restProps),
@@ -3771,7 +3778,7 @@ var TableTreeCellBase = function TableTreeCellBase(_ref) {
 TableTreeCellBase.propTypes = {
   value: PropTypes.any,
   column: PropTypes.object,
-  row: PropTypes.object,
+  row: PropTypes.any,
   classes: PropTypes.object.isRequired,
   children: PropTypes.node,
   tableRow: PropTypes.object,
@@ -3835,7 +3842,7 @@ var SearchPanelInputBase = function SearchPanelInputBase(_ref) {
       value = _ref.value,
       getMessage = _ref.getMessage,
       restProps = objectWithoutProperties(_ref, ['onValueChange', 'value', 'getMessage']);
-  return React.createElement(Input__default, _extends({
+  return React.createElement(Input, _extends({
     onChange: function onChange(e) {
       return onValueChange(e.target.value);
     },
@@ -3844,7 +3851,7 @@ var SearchPanelInputBase = function SearchPanelInputBase(_ref) {
     placeholder: getMessage('searchPlaceholder')
   }, restProps, {
     startAdornment: React.createElement(
-      Input.InputAdornment,
+      InputAdornment,
       { position: 'start' },
       React.createElement(Search, null)
     )

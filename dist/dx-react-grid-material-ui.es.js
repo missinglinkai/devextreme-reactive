@@ -1,36 +1,44 @@
 /**
  * Bundle of @devexpress/dx-react-grid-material-ui
- * Generated: 2018-04-19
- * Version: 1.2.0-beta.2
+ * Generated: 2018-05-24
+ * Version: 1.3.0-beta.2
  * License: https://js.devexpress.com/Licensing
  */
 
 import { PureComponent, createElement } from 'react';
 import { any, arrayOf, bool, func, node, number, object, oneOf, oneOfType, shape, string } from 'prop-types';
 import { ColumnChooser, DragDropProvider, Grid, GroupPanelLayout, GroupingPanel, PagingPanel, SearchPanel, StaticTableLayout, Table, TableBandHeader, TableColumnReordering, TableColumnResizing, TableColumnVisibility, TableEditColumn, TableEditRow, TableFilterRow, TableGroupRow, TableHeaderRow, TableLayout, TableRowDetail, TableSelection, TableTreeColumn, Toolbar, VirtualTableLayout } from '@devexpress/dx-react-grid';
-import Popover from 'material-ui/Popover';
-import List, { ListItem, ListItemText } from 'material-ui/List';
-import IconButton from 'material-ui/IconButton';
-import Tooltip from 'material-ui/Tooltip';
+import Popover from '@material-ui/core/Popover';
+import List from '@material-ui/core/List';
+import IconButton from '@material-ui/core/IconButton';
+import Tooltip from '@material-ui/core/Tooltip';
 import VisibilityOff from '@material-ui/icons/VisibilityOff';
-import Checkbox from 'material-ui/Checkbox';
+import ListItem from '@material-ui/core/ListItem';
+import ListItemText from '@material-ui/core/ListItemText';
+import Checkbox from '@material-ui/core/Checkbox';
 import classNames from 'classnames';
-import Chip from 'material-ui/Chip';
-import { withStyles } from 'material-ui/styles';
-import Input, { InputAdornment } from 'material-ui/Input';
-import { MenuItem } from 'material-ui/Menu';
-import Select from 'material-ui/Select';
-import Button from 'material-ui/Button';
+import Chip from '@material-ui/core/Chip';
+import { withStyles } from '@material-ui/core/styles';
+import Input from '@material-ui/core/Input';
+import MenuItem from '@material-ui/core/MenuItem';
+import Select from '@material-ui/core/Select';
+import Button from '@material-ui/core/Button';
 import ChevronLeft from '@material-ui/icons/ChevronLeft';
 import ChevronRight from '@material-ui/icons/ChevronRight';
-import { firstRowOnPage, lastRowOnPage } from '@devexpress/dx-grid-core';
-import TableMUI, { TableBody, TableCell, TableHead, TableRow, TableSortLabel } from 'material-ui/Table';
+import { calculateStartPage, firstRowOnPage, lastRowOnPage } from '@devexpress/dx-grid-core';
+import TableSortLabel from '@material-ui/core/TableSortLabel';
+import TableCell from '@material-ui/core/TableCell';
 import ExpandMore from '@material-ui/icons/ExpandMore';
 import ExpandLess from '@material-ui/icons/ExpandLess';
+import TableRowMUI from '@material-ui/core/TableRow';
+import TableBody from '@material-ui/core/TableBody';
+import TableHead from '@material-ui/core/TableHead';
+import TableMUI from '@material-ui/core/Table';
 import { DragSource, Draggable, DropTarget, createRenderComponent } from '@devexpress/dx-react-core';
 import List$1 from '@material-ui/icons/List';
-import { darken, fade, lighten } from 'material-ui/styles/colorManipulator';
-import Toolbar$1 from 'material-ui/Toolbar';
+import { darken, fade, lighten } from '@material-ui/core/styles/colorManipulator';
+import Toolbar$1 from '@material-ui/core/Toolbar';
+import InputAdornment from '@material-ui/core/InputAdornment';
 import Search from '@material-ui/icons/Search';
 
 var asyncGenerator = function () {
@@ -468,8 +476,6 @@ var styles$1 = function styles$$1(theme) {
       display: 'inline-block'
     },
     column: {
-      paddingTop: theme.spacing.unit,
-      paddingBottom: theme.spacing.unit,
       paddingLeft: theme.spacing.unit * 2,
       paddingRight: theme.spacing.unit * 2,
       float: 'right',
@@ -737,10 +743,6 @@ PageButton.defaultProps = {
 };
 
 var ellipsisSymbol = '\u2026';
-
-var calculateStartPage = function calculateStartPage(currentPage, maxButtonCount, totalPageCount) {
-  return Math.max(Math.min(currentPage - Math.floor(maxButtonCount / 2, 10), totalPageCount - maxButtonCount + 1), 1);
-};
 
 var renderPageButtons = function renderPageButtons(currentPage, totalPageCount, classes, onCurrentPageChange) {
   var pageButtons = [];
@@ -1121,7 +1123,9 @@ var GroupPanelItem = withStyles(styles$6, { name: 'GroupPanelItem' })(GroupPanel
 var styles$7 = function styles$$1(theme) {
   return {
     groupInfo: {
-      color: theme.typography.title.color
+      color: theme.typography.caption.color,
+      fontFamily: theme.typography.fontFamily,
+      fontSize: theme.typography.fontSize
     }
   };
 };
@@ -1243,7 +1247,7 @@ var TableDetailToggleCellBase = function TableDetailToggleCellBase(_ref) {
         className: classes.toggleCellButton,
         onClick: handleClick
       },
-      expanded ? createElement(ExpandMore, null) : createElement(ExpandLess, null)
+      expanded ? createElement(ExpandLess, null) : createElement(ExpandMore, null)
     )
   );
 };
@@ -1256,7 +1260,7 @@ TableDetailToggleCellBase.propTypes = {
   className: string,
   tableColumn: object,
   tableRow: object,
-  row: object
+  row: any
 };
 
 TableDetailToggleCellBase.defaultProps = {
@@ -1308,7 +1312,7 @@ TableDetailCellBase.propTypes = {
   className: string,
   tableColumn: object,
   tableRow: object,
-  row: object
+  row: any
 };
 
 TableDetailCellBase.defaultProps = {
@@ -1323,27 +1327,27 @@ TableDetailCellBase.defaultProps = {
 
 var TableDetailCell = withStyles(styles$9, { name: 'TableDetailCell' })(TableDetailCellBase);
 
-var TableRow$1 = function TableRow$$1(_ref) {
+var TableRow = function TableRow(_ref) {
   var children = _ref.children,
       row = _ref.row,
       tableRow = _ref.tableRow,
       tableColumn = _ref.tableColumn,
       restProps = objectWithoutProperties(_ref, ['children', 'row', 'tableRow', 'tableColumn']);
   return createElement(
-    TableRow,
+    TableRowMUI,
     restProps,
     children
   );
 };
 
-TableRow$1.propTypes = {
+TableRow.propTypes = {
   children: node,
-  row: object,
+  row: any,
   tableRow: object,
   tableColumn: object
 };
 
-TableRow$1.defaultProps = {
+TableRow.defaultProps = {
   children: undefined,
   row: undefined,
   tableRow: undefined,
@@ -1364,7 +1368,7 @@ var TableRowDetail$1 = function (_React$PureComponent) {
       return createElement(TableRowDetail, _extends({
         toggleCellComponent: TableDetailToggleCell,
         cellComponent: TableDetailCell,
-        rowComponent: TableRow$1,
+        rowComponent: TableRow,
         toggleColumnWidth: 48
       }, this.props));
     }
@@ -1374,7 +1378,7 @@ var TableRowDetail$1 = function (_React$PureComponent) {
 
 TableRowDetail$1.Cell = TableDetailCell;
 TableRowDetail$1.ToggleCell = TableDetailToggleCell;
-TableRowDetail$1.Row = TableRow$1;
+TableRowDetail$1.Row = TableRow;
 
 var styles$10 = function styles$$1(theme) {
   return {
@@ -1450,7 +1454,7 @@ var TableGroupCellBase = function TableGroupCellBase(_ref) {
 TableGroupCellBase.propTypes = {
   style: object,
   colSpan: number,
-  row: object,
+  row: any,
   column: object,
   expanded: bool,
   onToggle: func,
@@ -1489,7 +1493,7 @@ var TableGroupRow$1 = function (_React$PureComponent) {
     value: function render() {
       return createElement(TableGroupRow, _extends({
         cellComponent: TableGroupCell,
-        rowComponent: TableRow$1,
+        rowComponent: TableRow,
         indentColumnWidth: 48
       }, this.props));
     }
@@ -1497,7 +1501,7 @@ var TableGroupRow$1 = function (_React$PureComponent) {
   return TableGroupRow$$1;
 }(PureComponent);
 
-TableGroupRow$1.Row = TableRow$1;
+TableGroupRow$1.Row = TableRow;
 TableGroupRow$1.Cell = TableGroupCell;
 
 var styles$11 = function styles$$1(theme) {
@@ -1630,7 +1634,7 @@ TableSelectCellBase.propTypes = {
   selected: bool,
   onToggle: func,
   classes: object.isRequired,
-  row: object,
+  row: any,
   tableRow: object,
   tableColumn: object,
   className: string
@@ -1658,7 +1662,7 @@ var TableSelectRow = function TableSelectRow(_ref) {
       children = _ref.children,
       restProps = objectWithoutProperties(_ref, ['selected', 'selectByRowClick', 'onToggle', 'row', 'tableRow', 'tableColumn', 'children']);
   return createElement(
-    TableRow,
+    TableRowMUI,
     _extends({
       selected: selected,
       onClick: function onClick(e) {
@@ -1676,7 +1680,7 @@ TableSelectRow.propTypes = {
   onToggle: func,
   selected: bool,
   selectByRowClick: bool,
-  row: object,
+  row: any,
   tableColumn: object,
   tableRow: object
 };
@@ -1719,7 +1723,8 @@ TableSelection$1.HeaderCell = TableSelectAllCell;
 var styles$13 = function styles$$1(theme) {
   return {
     table: {
-      tableLayout: 'fixed'
+      tableLayout: 'fixed',
+      overflow: 'hidden'
     },
     headTable: {
       position: 'sticky',
@@ -1821,7 +1826,7 @@ var TableCellBase = function TableCellBase(_ref) {
 TableCellBase.propTypes = {
   value: any,
   column: object,
-  row: object,
+  row: any,
   classes: object.isRequired,
   children: node,
   tableRow: object,
@@ -1968,7 +1973,7 @@ var TableStubRow = function TableStubRow(_ref) {
       tableRow = _ref.tableRow,
       restProps = objectWithoutProperties(_ref, ['children', 'tableRow']);
   return createElement(
-    TableRow,
+    TableRowMUI,
     restProps,
     children
   );
@@ -2010,9 +2015,9 @@ var Table$1 = function (_React$PureComponent) {
         bodyComponent: TableBody,
         containerComponent: TableContainer,
         layoutComponent: TableLayout$1,
-        rowComponent: TableRow$1,
+        rowComponent: TableRow,
         cellComponent: TableCell$1,
-        noDataRowComponent: TableRow$1,
+        noDataRowComponent: TableRow,
         noDataCellComponent: TableNoDataCell,
         stubRowComponent: TableStubRow,
         stubCellComponent: TableStubCell,
@@ -2025,9 +2030,9 @@ var Table$1 = function (_React$PureComponent) {
 }(PureComponent);
 
 Table$1.Cell = TableCell$1;
-Table$1.Row = TableRow$1;
+Table$1.Row = TableRow;
 Table$1.NoDataCell = TableNoDataCell;
-Table$1.NoDataRow = TableRow$1;
+Table$1.NoDataRow = TableRow;
 Table$1.StubRow = TableStubRow;
 Table$1.StubCell = TableStubCell;
 Table$1.StubHeaderCell = TableStubCell;
@@ -2107,9 +2112,9 @@ var VirtualTable = function (_React$PureComponent) {
         headComponent: TableHead,
         tableComponent: Table$2,
         containerComponent: TableContainer,
-        rowComponent: TableRow$1,
+        rowComponent: TableRow,
         cellComponent: TableCell$1,
-        noDataRowComponent: TableRow$1,
+        noDataRowComponent: TableRow,
         noDataCellComponent: TableNoDataCell,
         stubRowComponent: TableStubRow,
         stubCellComponent: TableStubCell,
@@ -2122,9 +2127,9 @@ var VirtualTable = function (_React$PureComponent) {
 }(PureComponent);
 
 VirtualTable.Cell = TableCell$1;
-VirtualTable.Row = TableRow$1;
+VirtualTable.Row = TableRow;
 VirtualTable.NoDataCell = TableNoDataCell;
-VirtualTable.NoDataRow = TableRow$1;
+VirtualTable.NoDataRow = TableRow;
 VirtualTable.StubCell = TableStubCell;
 VirtualTable.StubHeaderCell = TableStubCell;
 VirtualTable.Table = Table$2;
@@ -2247,7 +2252,7 @@ var TableFilterRow$1 = function (_React$PureComponent) {
 
       return createElement(TableFilterRow, _extends({
         cellComponent: TableFilterCell,
-        rowComponent: TableRow$1,
+        rowComponent: TableRow,
         messages: _extends({}, defaultMessages$5, messages)
       }, restProps));
     }
@@ -2256,7 +2261,7 @@ var TableFilterRow$1 = function (_React$PureComponent) {
 }(PureComponent);
 
 TableFilterRow$1.Cell = TableFilterCell;
-TableFilterRow$1.Row = TableRow$1;
+TableFilterRow$1.Row = TableRow;
 
 TableFilterRow$1.propTypes = {
   messages: shape({
@@ -2474,7 +2479,7 @@ var SortingControlBase = function SortingControlBase(_ref) {
       placement: align === 'right' ? 'bottom-end' : 'bottom-start',
       enterDelay: 300,
       classes: {
-        root: classes.tooltipRoot
+        tooltip: classes.tooltipRoot
       }
     },
     createElement(
@@ -2580,13 +2585,13 @@ var styles$19 = function styles$$1(theme) {
       flexDirection: 'row',
       alignItems: 'center'
     },
-    containerRight: {
-      flexDirection: 'row-reversed'
-    },
     content: {
       width: '100%',
       overflow: 'hidden',
       textOverflow: 'ellipsis'
+    },
+    contentRight: {
+      flexDirection: 'row-reverse'
     },
     contentNoWrap: {
       whiteSpace: 'nowrap'
@@ -2633,7 +2638,6 @@ var TableHeaderCellBase = function (_React$PureComponent) {
     value: function render() {
       var _classNames,
           _classNames2,
-          _classNames3,
           _this2 = this;
 
       var _props = this.props,
@@ -2664,8 +2668,7 @@ var TableHeaderCellBase = function (_React$PureComponent) {
       var columnTitle = column && (column.title || column.name);
 
       var tableCellClasses = classNames((_classNames = {}, defineProperty(_classNames, classes.cell, true), defineProperty(_classNames, classes.cellRight, align === 'right'), defineProperty(_classNames, classes.cellCenter, align === 'center'), defineProperty(_classNames, classes.cellNoUserSelect, draggingEnabled || showSortingControls), defineProperty(_classNames, classes.cellDraggable, draggingEnabled), defineProperty(_classNames, classes.cellDimmed, dragging || tableColumn && tableColumn.draft), _classNames), className);
-      var containerClassses = classNames((_classNames2 = {}, defineProperty(_classNames2, classes.container, true), defineProperty(_classNames2, classes.containerRight, align === 'right'), _classNames2));
-      var contentClassed = classNames((_classNames3 = {}, defineProperty(_classNames3, classes.content, true), defineProperty(_classNames3, classes.contentNoWrap, !(tableColumn && tableColumn.wordWrapEnabled)), _classNames3));
+      var contentClassed = classNames((_classNames2 = {}, defineProperty(_classNames2, classes.content, true), defineProperty(_classNames2, classes.contentNoWrap, !(tableColumn && tableColumn.wordWrapEnabled)), defineProperty(_classNames2, classes.contentRight, align === 'right'), _classNames2));
       var cellLayout = createElement(
         TableCell,
         _extends({
@@ -2675,7 +2678,7 @@ var TableHeaderCellBase = function (_React$PureComponent) {
         }, restProps),
         createElement(
           'div',
-          { className: containerClassses },
+          { className: classes.container },
           before,
           createElement(
             'div',
@@ -2799,7 +2802,7 @@ var TableHeaderRow$1 = function (_React$PureComponent) {
 
       return createElement(TableHeaderRow, _extends({
         cellComponent: TableHeaderCell,
-        rowComponent: TableRow$1,
+        rowComponent: TableRow,
         messages: _extends({}, defaultMessages$6, messages)
       }, restProps));
     }
@@ -2808,7 +2811,7 @@ var TableHeaderRow$1 = function (_React$PureComponent) {
 }(PureComponent);
 
 TableHeaderRow$1.Cell = TableHeaderCell;
-TableHeaderRow$1.Row = TableRow$1;
+TableHeaderRow$1.Row = TableRow;
 
 TableHeaderRow$1.propTypes = {
   messages: shape({
@@ -2870,7 +2873,7 @@ var CellBase = function CellBase(_ref) {
 CellBase.propTypes = {
   value: any,
   column: object,
-  row: object,
+  row: any,
   classes: object.isRequired,
   children: node,
   tableRow: object,
@@ -2962,7 +2965,7 @@ var RowBase = function RowBase(_ref) {
       tableColumn = _ref.tableColumn,
       restProps = objectWithoutProperties(_ref, ['children', 'classes', 'className', 'row', 'tableRow', 'tableColumn']);
   return createElement(
-    TableRow,
+    TableRowMUI,
     _extends({
       className: classNames(classes.row, className)
     }, restProps),
@@ -2973,7 +2976,7 @@ var RowBase = function RowBase(_ref) {
 RowBase.propTypes = {
   classes: object.isRequired,
   children: node,
-  row: object,
+  row: any,
   tableRow: object,
   tableColumn: object,
   className: string
@@ -3071,7 +3074,7 @@ var EditCellBase = function EditCellBase(_ref) {
 
 EditCellBase.propTypes = {
   column: object,
-  row: object,
+  row: any,
   tableRow: object,
   tableColumn: object,
   value: any,
@@ -3110,7 +3113,7 @@ var TableEditRow$1 = function (_React$PureComponent) {
     value: function render() {
       return createElement(TableEditRow, _extends({
         cellComponent: EditCell,
-        rowComponent: TableRow$1
+        rowComponent: TableRow
       }, this.props));
     }
   }]);
@@ -3118,7 +3121,7 @@ var TableEditRow$1 = function (_React$PureComponent) {
 }(PureComponent);
 
 TableEditRow$1.Cell = EditCell;
-TableEditRow$1.Row = TableRow$1;
+TableEditRow$1.Row = TableRow;
 
 var styles$28 = function styles$$1(theme) {
   return {
@@ -3245,7 +3248,7 @@ EditCommandCellBase.propTypes = {
   className: string,
   tableRow: object,
   tableColumn: object,
-  row: object
+  row: any
 };
 
 EditCommandCellBase.defaultProps = {
@@ -3317,7 +3320,10 @@ var styles$29 = function styles$$1(theme) {
   return {
     emptyMessage: {
       margin: '0 auto',
-      padding: theme.spacing.unit * 5 + 'px 0'
+      padding: theme.spacing.unit * 5 + 'px 0',
+      fontFamily: theme.typography.fontFamily,
+      color: theme.typography.subheading.color,
+      fontSize: theme.typography.subheading.fontSize
     }
   };
 };
@@ -3433,7 +3439,7 @@ var TableContainer$1 = function TableContainer(_ref) {
 var ReorderingRow = function ReorderingRow(_ref2) {
   var style = _ref2.style,
       restParams = objectWithoutProperties(_ref2, ['style']);
-  return createElement(TableRow$1, _extends({
+  return createElement(TableRow, _extends({
     style: _extends({}, style, {
       visibility: 'hidden'
     })
@@ -3546,10 +3552,12 @@ Toolbar$2.Root = Toolbar$3;
 var styles$31 = function styles$$1(theme) {
   return {
     button: {
-      marginTop: -theme.spacing.unit,
-      marginBottom: -theme.spacing.unit,
+      marginTop: '-1px',
+      marginBottom: '-1px',
       marginLeft: -theme.spacing.unit,
-      marginRight: theme.spacing.unit * 2
+      marginRight: theme.spacing.unit * 2,
+      width: theme.spacing.unit * 5,
+      height: theme.spacing.unit * 5
     },
     hidden: {
       cursor: 'default',
@@ -3602,10 +3610,12 @@ var TableTreeExpandButton = withStyles(styles$31)(TableTreeExpandButtonBase);
 var styles$32 = function styles$$1(theme) {
   return {
     checkbox: {
-      marginTop: -theme.spacing.unit,
-      marginBottom: -theme.spacing.unit,
+      marginTop: '-1px',
+      marginBottom: '-1px',
       marginRight: theme.spacing.unit * 2,
-      marginLeft: -theme.spacing.unit * 2
+      marginLeft: -theme.spacing.unit * 2,
+      width: theme.spacing.unit * 5,
+      height: theme.spacing.unit * 5
     }
   };
 };
@@ -3762,7 +3772,7 @@ var TableTreeCellBase = function TableTreeCellBase(_ref) {
 TableTreeCellBase.propTypes = {
   value: any,
   column: object,
-  row: object,
+  row: any,
   classes: object.isRequired,
   children: node,
   tableRow: object,

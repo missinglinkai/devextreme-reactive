@@ -28,13 +28,13 @@ export interface ColumnChooserProps {
 /** The ColumnChooser plugin allows a user to toggle grid columns' visibility at runtime. The column chooser lists columns with checkboxes that control a corresponding column's visibility. */
 export declare const ColumnChooser: React.ComponentType<ColumnChooserProps> & {
   /** A component that renders a button that invokes the column chooser. */
-  ToggleButton: React.ComponentType<ColumnChooserBase.ToggleButtonProps & { [x: string]: any }>;
+  ToggleButton: React.ComponentType<ColumnChooserBase.ToggleButtonProps & { className?: string; style?: React.CSSProperties; [x: string]: any }>;
   /** A component that renders the column chooser overlay. */
-  Overlay: React.ComponentType<ColumnChooserBase.OverlayProps & { [x: string]: any }>;
+  Overlay: React.ComponentType<ColumnChooserBase.OverlayProps & { className?: string; style?: React.CSSProperties; [x: string]: any }>;
   /** A component that renders the column chooser container. */
-  Container: React.ComponentType<ColumnChooserBase.ContainerProps & { [x: string]: any }>;
+  Container: React.ComponentType<ColumnChooserBase.ContainerProps & { className?: string; style?: React.CSSProperties; [x: string]: any }>;
   /** A component that renders a column chooser item. */
-  Item: React.ComponentType<ColumnChooserBase.ItemProps & { [x: string]: any }>;
+  Item: React.ComponentType<ColumnChooserBase.ItemProps & { className?: string; style?: React.CSSProperties; [x: string]: any }>;
 };
 
 // -------------------------------------------------------------------------------------------------
@@ -55,9 +55,9 @@ export interface DragDropProviderProps {
 /** A plugin that implements the drag-and-drop functionality and visualizes columns that are being dragged. */
 export declare const DragDropProvider: React.ComponentType<DragDropProviderProps> & {
   /** A component that renders a container for columns being dragged. */
-  Container: React.ComponentType<DragDropProviderBase.ContainerProps & { [x: string]: any }>;
+  Container: React.ComponentType<DragDropProviderBase.ContainerProps & { className?: string; style?: React.CSSProperties; [x: string]: any }>;
   /** A component that renders a column being dragged. */
-  Column: React.ComponentType<DragDropProviderBase.ColumnProps & { [x: string]: any }>;
+  Column: React.ComponentType<DragDropProviderBase.ColumnProps & { className?: string; style?: React.CSSProperties; [x: string]: any }>;
 };
 
 // -------------------------------------------------------------------------------------------------
@@ -84,7 +84,7 @@ export interface GridProps {
 /** The Grid is a root container component designed to process and display data specified via the `rows` property. You can configure columns using the `columns` property. The Grid's functionality  is implemented in several plugins specified as child components. See the plugins concept for details. */
 export declare const Grid: React.ComponentType<GridProps> & {
   /** A component that renders the grid root layout. */
-  Root: React.ComponentType<GridBase.RootProps & { [x: string]: any }>;
+  Root: React.ComponentType<GridBase.RootProps & { className?: string; style?: React.CSSProperties; [x: string]: any }>;
 };
 
 // -------------------------------------------------------------------------------------------------
@@ -113,11 +113,11 @@ export interface GroupingPanelProps {
 /** A plugin that renders the Grouping Panel in the Grid's header. This panel displays grouped columns and allows a user to modify grouping options.Optionally, the plugin allows an end-user to change grouped columns' sorting order and render sorting indicators. */
 export declare const GroupingPanel: React.ComponentType<GroupingPanelProps> & {
   /** A component that renders a grouping panel container. */
-  Container: React.ComponentType<GroupingPanelBase.ContainerProps & { [x: string]: any }>;
+  Container: React.ComponentType<GroupingPanelBase.ContainerProps & { className?: string; style?: React.CSSProperties; [x: string]: any }>;
   /** A component that renders a grouping panel item. */
-  Item: React.ComponentType<GroupingPanelBase.ItemProps & { [x: string]: any }>;
+  Item: React.ComponentType<GroupingPanelBase.ItemProps & { className?: string; style?: React.CSSProperties; [x: string]: any }>;
   /** A component that renders an empty grouping panel message. */
-  EmptyMessage: React.ComponentType<GroupingPanelBase.EmptyMessageProps & { [x: string]: any }>;
+  EmptyMessage: React.ComponentType<GroupingPanelBase.EmptyMessageProps & { className?: string; style?: React.CSSProperties; [x: string]: any }>;
 };
 
 // -------------------------------------------------------------------------------------------------
@@ -140,7 +140,7 @@ export interface PagingPanelProps {
 /** A plugin that renders the paging panel used for navigation through data pages. */
 export declare const PagingPanel: React.ComponentType<PagingPanelProps> & {
   /** A component that renders the paging panel. */
-  Container: React.ComponentType<PagingPanelBase.ContainerProps & { [x: string]: any }>;
+  Container: React.ComponentType<PagingPanelBase.ContainerProps & { className?: string; style?: React.CSSProperties; [x: string]: any }>;
 };
 
 // -------------------------------------------------------------------------------------------------
@@ -152,16 +152,16 @@ import {
 } from '@devexpress/dx-react-grid';
 
 export interface SearchPanelProps {
-  /** A component that renders the Search Panel input element */
+  /** A component that renders the Search Panel input element. */
   inputComponent?: React.ComponentType<SearchPanelBase.InputProps>;
-  /** An object that specifies localization messages */
+  /** An object that specifies localization messages. */
   messages?: SearchPanelBase.LocalizationMessages;
 }
 
 /** A plugin that renders the Search Panel. */
 export declare const SearchPanel: React.ComponentType<SearchPanelProps> & {
-  /** A component that renders the Search Panel input element */
-  Input: React.ComponentType<SearchPanelBase.InputProps & { [x: string]: any }>;
+  /** A component that renders the Search Panel input element. */
+  Input: React.ComponentType<SearchPanelBase.InputProps & { className?: string; style?: React.CSSProperties; [x: string]: any }>;
 };
 
 // -------------------------------------------------------------------------------------------------
@@ -181,12 +181,12 @@ export interface TableBandHeaderProps {
   columnBands?: Array<TableBandHeaderBase.ColumnBands>;
 }
 
-/** A plugin that renders the band cells. */
+/** A plugin that renders the banded cells. */
 export declare const TableBandHeader: React.ComponentType<TableBandHeaderProps> & {
   /** A component that renders a band cell. */
-  Cell: React.ComponentType<React.ComponentType<TableBase.CellProps> & { [x: string]: any }>;
+  Cell: React.ComponentType<React.ComponentType<TableBase.CellProps> & { className?: string; style?: React.CSSProperties; [x: string]: any }>;
   /** A component that renders a band cells' row. */
-  Row: React.ComponentType<React.ComponentType<TableBase.RowProps> & { [x: string]: any }>;
+  Row: React.ComponentType<React.ComponentType<TableBase.RowProps> & { className?: string; style?: React.CSSProperties; [x: string]: any }>;
 };
 
 // -------------------------------------------------------------------------------------------------
@@ -259,7 +259,7 @@ export interface TableColumnVisibilityProps {
 /** A plugin that manages Grid columns' visibility. */
 export declare const TableColumnVisibility: React.ComponentType<TableColumnVisibilityProps> & {
   /** A component that renders a message displayed when all columns are hidden. */
-  EmptyMessage: React.ComponentType<TableColumnVisibilityBase.EmptyMessageProps & { [x: string]: any }>;
+  EmptyMessage: React.ComponentType<TableColumnVisibilityBase.EmptyMessageProps & { className?: string; style?: React.CSSProperties; [x: string]: any }>;
 };
 
 // -------------------------------------------------------------------------------------------------
@@ -292,11 +292,11 @@ export interface TableEditColumnProps {
 /** A plugin that renders a command column. This column contains controls used for row editing, creating, or deleting and committing/canceling changes. */
 export declare const TableEditColumn: React.ComponentType<TableEditColumnProps> & {
   /** A component that renders a command control within a command cell. */
-  Command: React.ComponentType<TableEditColumnBase.CommandProps & { [x: string]: any }>;
+  Command: React.ComponentType<TableEditColumnBase.CommandProps & { className?: string; style?: React.CSSProperties; [x: string]: any }>;
   /** A component that renders a command cell within a data row. */
-  Cell: React.ComponentType<TableEditColumnBase.CellProps & { [x: string]: any }>;
+  Cell: React.ComponentType<TableEditColumnBase.CellProps & { className?: string; style?: React.CSSProperties; [x: string]: any }>;
   /** A component that renders a command cell within the header row. */
-  HeaderCell: React.ComponentType<TableEditColumnBase.HeaderCellProps & { [x: string]: any }>;
+  HeaderCell: React.ComponentType<TableEditColumnBase.HeaderCellProps & { className?: string; style?: React.CSSProperties; [x: string]: any }>;
 };
 
 // -------------------------------------------------------------------------------------------------
@@ -319,9 +319,9 @@ export interface TableEditRowProps {
 /** A plugin that renders a row being edited. */
 export declare const TableEditRow: React.ComponentType<TableEditRowProps> & {
   /** A component that renders an editable cell. */
-  Cell: React.ComponentType<TableEditRowBase.CellProps & { [x: string]: any }>;
+  Cell: React.ComponentType<TableEditRowBase.CellProps & { className?: string; style?: React.CSSProperties; [x: string]: any }>;
   /** A component that renders an editable row. */
-  Row: React.ComponentType<TableEditRowBase.RowProps & { [x: string]: any }>;
+  Row: React.ComponentType<TableEditRowBase.RowProps & { className?: string; style?: React.CSSProperties; [x: string]: any }>;
 };
 
 // -------------------------------------------------------------------------------------------------
@@ -346,9 +346,9 @@ export interface TableFilterRowProps {
 /** A plugin that renders a filter row. */
 export declare const TableFilterRow: React.ComponentType<TableFilterRowProps> & {
   /** A component that renders a filter row cell. */
-  Cell: React.ComponentType<TableFilterRowBase.CellProps & { [x: string]: any }>;
+  Cell: React.ComponentType<TableFilterRowBase.CellProps & { className?: string; style?: React.CSSProperties; [x: string]: any }>;
   /** A component that renders a filter row. */
-  Row: React.ComponentType<TableBase.RowProps & { [x: string]: any }>;
+  Row: React.ComponentType<TableBase.RowProps & { className?: string; style?: React.CSSProperties; [x: string]: any }>;
 };
 
 // -------------------------------------------------------------------------------------------------
@@ -377,9 +377,9 @@ export interface TableGroupRowProps {
 /** A plugin that renders group rows and enables them to expand and collapse. */
 export declare const TableGroupRow: React.ComponentType<TableGroupRowProps> & {
   /** A component that renders a group row. */
-  Row: React.ComponentType<TableGroupRowBase.RowProps & { [x: string]: any }>;
+  Row: React.ComponentType<TableGroupRowBase.RowProps & { className?: string; style?: React.CSSProperties; [x: string]: any }>;
   /** A component that renders a group cell. */
-  Cell: React.ComponentType<TableGroupRowBase.CellProps & { [x: string]: any }>;
+  Cell: React.ComponentType<TableGroupRowBase.CellProps & { className?: string; style?: React.CSSProperties; [x: string]: any }>;
 };
 
 // -------------------------------------------------------------------------------------------------
@@ -406,9 +406,9 @@ export interface TableHeaderRowProps {
 /** A plugin that renders the table's header row. The Column's `title` field specifies the column's title in the header row.The plugin also allows you to manage a column's sorting and grouping state and initiate column dragging. */
 export declare const TableHeaderRow: React.ComponentType<TableHeaderRowProps> & {
   /** A component that renders a header row. */
-  Row: React.ComponentType<TableBase.RowProps & { [x: string]: any }>;
+  Row: React.ComponentType<TableBase.RowProps & { className?: string; style?: React.CSSProperties; [x: string]: any }>;
   /** A component that renders a header cell. */
-  Cell: React.ComponentType<TableHeaderRowBase.CellProps & { [x: string]: any }>;
+  Cell: React.ComponentType<TableHeaderRowBase.CellProps & { className?: string; style?: React.CSSProperties; [x: string]: any }>;
 };
 
 // -------------------------------------------------------------------------------------------------
@@ -437,11 +437,11 @@ export interface TableRowDetailProps {
 /** A plugin that renders detail rows. */
 export declare const TableRowDetail: React.ComponentType<TableRowDetailProps> & {
   /** A component that renders a detail cell. */
-  Cell: React.ComponentType<TableRowDetailBase.CellProps & { [x: string]: any }>;
+  Cell: React.ComponentType<TableRowDetailBase.CellProps & { className?: string; style?: React.CSSProperties; [x: string]: any }>;
   /** A component that renders a detail row. */
-  Row: React.ComponentType<TableRowDetailBase.RowProps & { [x: string]: any }>;
+  Row: React.ComponentType<TableRowDetailBase.RowProps & { className?: string; style?: React.CSSProperties; [x: string]: any }>;
   /** A component that renders a cell containing the expand/collapse control. */
-  ToggleCell: React.ComponentType<TableRowDetailBase.ToggleCellProps & { [x: string]: any }>;
+  ToggleCell: React.ComponentType<TableRowDetailBase.ToggleCellProps & { className?: string; style?: React.CSSProperties; [x: string]: any }>;
 };
 
 // -------------------------------------------------------------------------------------------------
@@ -472,9 +472,9 @@ export interface TableSelectionProps {
 /** A plugin that visualizes table rows' selection state by rendering selection checkboxes and highlighting the selected rows. */
 export declare const TableSelection: React.ComponentType<TableSelectionProps> & {
   /** A component that renders a cell with the selection control inside the heading row. */
-  HeaderCell: React.ComponentType<TableSelectionBase.HeaderCellProps & { [x: string]: any }>;
+  HeaderCell: React.ComponentType<TableSelectionBase.HeaderCellProps & { className?: string; style?: React.CSSProperties; [x: string]: any }>;
   /** A component that renders a cell with selection control. */
-  Cell: React.ComponentType<TableSelectionBase.CellProps & { [x: string]: any }>;
+  Cell: React.ComponentType<TableSelectionBase.CellProps & { className?: string; style?: React.CSSProperties; [x: string]: any }>;
 };
 
 // -------------------------------------------------------------------------------------------------
@@ -507,15 +507,15 @@ export interface TableTreeColumnProps {
 /** A plugin that renders a table column with toggle button and sorting indicators. */
 export declare const TableTreeColumn: React.ComponentType<TableTreeColumnProps> & {
   /** A component that renders a cell within a data row. */
-  Cell: React.ComponentType<TableTreeColumnBase.CellProps & { [x: string]: any }>;
+  Cell: React.ComponentType<TableTreeColumnBase.CellProps & { className?: string; style?: React.CSSProperties; [x: string]: any }>;
   /** A component that renders a cell's content. */
-  Content: React.ComponentType<TableTreeColumnBase.ContentProps & { [x: string]: any }>;
+  Content: React.ComponentType<TableTreeColumnBase.ContentProps & { className?: string; style?: React.CSSProperties; [x: string]: any }>;
   /** A component that renders an indent used to identify a row level. */
-  Indent: React.ComponentType<TableTreeColumnBase.IndentProps & { [x: string]: any }>;
+  Indent: React.ComponentType<TableTreeColumnBase.IndentProps & { className?: string; style?: React.CSSProperties; [x: string]: any }>;
   /** A component that renders a button used to controls a row's expanded state. */
-  ExpandButton: React.ComponentType<TableTreeColumnBase.ExpandButtonProps & { [x: string]: any }>;
+  ExpandButton: React.ComponentType<TableTreeColumnBase.ExpandButtonProps & { className?: string; style?: React.CSSProperties; [x: string]: any }>;
   /** A component that renders a checkbox used to control selection. */
-  Checkbox: React.ComponentType<TableTreeColumnBase.CheckboxProps & { [x: string]: any }>;
+  Checkbox: React.ComponentType<TableTreeColumnBase.CheckboxProps & { className?: string; style?: React.CSSProperties; [x: string]: any }>;
 };
 
 // -------------------------------------------------------------------------------------------------
@@ -558,27 +558,27 @@ export interface TableProps {
 /** A plugin that renders Grid data as a table. It contains the Table Row and Table Cell components that can be extended by other plugins and provides ways to customize table rows and columns. */
 export declare const Table: React.ComponentType<TableProps> & {
   /** A component that renders a table. */
-  Table: React.ComponentType<object & { [x: string]: any }>;
+  Table: React.ComponentType<object & { className?: string; style?: React.CSSProperties; [x: string]: any }>;
   /** A component that renders a table head. */
-  TableHead: React.ComponentType<object & { [x: string]: any }>;
+  TableHead: React.ComponentType<object & { className?: string; style?: React.CSSProperties; [x: string]: any }>;
   /** A component that renders a table body. */
-  TableBody: React.ComponentType<object & { [x: string]: any }>;
+  TableBody: React.ComponentType<object & { className?: string; style?: React.CSSProperties; [x: string]: any }>;
   /** A component that renders a table's container. */
-  Container: React.ComponentType<object & { [x: string]: any }>;
+  Container: React.ComponentType<object & { className?: string; style?: React.CSSProperties; [x: string]: any }>;
   /** A component that renders a table data cell. */
-  Cell: React.ComponentType<TableBase.DataCellProps & { [x: string]: any }>;
+  Cell: React.ComponentType<TableBase.DataCellProps & { className?: string; style?: React.CSSProperties; [x: string]: any }>;
   /** A component that renders a table data row. */
-  Row: React.ComponentType<TableBase.DataRowProps & { [x: string]: any }>;
+  Row: React.ComponentType<TableBase.DataRowProps & { className?: string; style?: React.CSSProperties; [x: string]: any }>;
   /** A component that renders a table cell when the table is empty. */
-  NoDataCell: React.ComponentType<TableBase.NoDataCellProps & { [x: string]: any }>;
+  NoDataCell: React.ComponentType<TableBase.NoDataCellProps & { className?: string; style?: React.CSSProperties; [x: string]: any }>;
   /** A component that renders a table row when the table is empty. */
-  NoDataRow: React.ComponentType<TableBase.RowProps & { [x: string]: any }>;
+  NoDataRow: React.ComponentType<TableBase.RowProps & { className?: string; style?: React.CSSProperties; [x: string]: any }>;
   /** A component that renders a stub table row. */
-  StubRow: React.ComponentType<TableBase.RowProps & { [x: string]: any }>;
+  StubRow: React.ComponentType<TableBase.RowProps & { className?: string; style?: React.CSSProperties; [x: string]: any }>;
   /** A component that renders a stub table cell. */
-  StubCell: React.ComponentType<TableBase.CellProps & { [x: string]: any }>;
+  StubCell: React.ComponentType<TableBase.CellProps & { className?: string; style?: React.CSSProperties; [x: string]: any }>;
   /** A component that renders a stub table header cell. */
-  StubHeaderCell: React.ComponentType<TableBase.CellProps & { [x: string]: any }>;
+  StubHeaderCell: React.ComponentType<TableBase.CellProps & { className?: string; style?: React.CSSProperties; [x: string]: any }>;
 };
 
 // -------------------------------------------------------------------------------------------------
@@ -597,7 +597,7 @@ export interface ToolbarProps {
 /** A plugin that renders the Grid toolbar. */
 export declare const Toolbar: React.ComponentType<ToolbarProps> & {
   /** A component that renders the toolbar root element. */
-  Root: React.ComponentType<ToolbarBase.RootProps & { [x: string]: any }>;
+  Root: React.ComponentType<ToolbarBase.RootProps & { className?: string; style?: React.CSSProperties; [x: string]: any }>;
 };
 
 // -------------------------------------------------------------------------------------------------
@@ -644,25 +644,25 @@ export interface VirtualTableProps {
 /** A plugin that renders a scrollable table instead of a static one. It contains the VirtualTable.Row and VirtualTable.Cell components that provide ways to customize virtual table rows and columns and can be extended by other plugins. */
 export declare const VirtualTable: React.ComponentType<VirtualTableProps> & {
   /** A component that renders a table. */
-  Table: React.ComponentType<object & { [x: string]: any }>;
+  Table: React.ComponentType<object & { className?: string; style?: React.CSSProperties; [x: string]: any }>;
   /** A component that renders a table head. */
-  TableHead: React.ComponentType<object & { [x: string]: any }>;
+  TableHead: React.ComponentType<object & { className?: string; style?: React.CSSProperties; [x: string]: any }>;
   /** A component that renders a table body. */
-  TableBody: React.ComponentType<object & { [x: string]: any }>;
+  TableBody: React.ComponentType<object & { className?: string; style?: React.CSSProperties; [x: string]: any }>;
   /** A component that renders a table's container. */
-  Container: React.ComponentType<object & { [x: string]: any }>;
+  Container: React.ComponentType<object & { className?: string; style?: React.CSSProperties; [x: string]: any }>;
   /** Renders a table data cell. */
-  Cell: React.ComponentType<TableBase.DataCellProps & { [x: string]: any }>;
+  Cell: React.ComponentType<TableBase.DataCellProps & { className?: string; style?: React.CSSProperties; [x: string]: any }>;
   /** Renders a table data row. */
-  Row: React.ComponentType<TableBase.DataRowProps & { [x: string]: any }>;
+  Row: React.ComponentType<TableBase.DataRowProps & { className?: string; style?: React.CSSProperties; [x: string]: any }>;
   /** Renders a table cell when the table is empty. */
-  NoDataCell: React.ComponentType<TableBase.CellProps & { [x: string]: any }>;
+  NoDataCell: React.ComponentType<TableBase.CellProps & { className?: string; style?: React.CSSProperties; [x: string]: any }>;
   /** Renders a table row when the table is empty. */
-  NoDataRow: React.ComponentType<TableBase.RowProps & { [x: string]: any }>;
+  NoDataRow: React.ComponentType<TableBase.RowProps & { className?: string; style?: React.CSSProperties; [x: string]: any }>;
   /** A component that renders a stub table row. */
-  StubRow: React.ComponentType<TableBase.RowProps & { [x: string]: any }>;
+  StubRow: React.ComponentType<TableBase.RowProps & { className?: string; style?: React.CSSProperties; [x: string]: any }>;
   /** Renders a stub table cell. */
-  StubCell: React.ComponentType<TableBase.CellProps & { [x: string]: any }>;
+  StubCell: React.ComponentType<TableBase.CellProps & { className?: string; style?: React.CSSProperties; [x: string]: any }>;
   /** Renders a stub table header cell. */
-  StubHeaderCell: React.ComponentType<TableBase.CellProps & { [x: string]: any }>;
+  StubHeaderCell: React.ComponentType<TableBase.CellProps & { className?: string; style?: React.CSSProperties; [x: string]: any }>;
 };
