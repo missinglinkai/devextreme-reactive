@@ -2512,7 +2512,7 @@ var SortingControlBase = function SortingControlBase(_ref) {
 SortingControlBase.propTypes = {
   align: PropTypes.string.isRequired,
   sortingDirection: PropTypes.oneOf(['asc', 'desc', null]),
-  columnTitle: PropTypes.oneOfType([object.isRequired, string.isRequired]),
+  columnTitle: PropTypes.oneOfType([PropTypes.object.isRequired, PropTypes.string.isRequired]),
   classes: PropTypes.object.isRequired,
   onClick: PropTypes.func.isRequired,
   getMessage: PropTypes.func.isRequired,
