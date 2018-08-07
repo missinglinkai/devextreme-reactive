@@ -337,6 +337,14 @@ export interface TableFilterRowProps {
   cellComponent?: React.ComponentType<TableFilterRowBase.CellProps>;
   /** A component that renders a filter row. */
   rowComponent?: React.ComponentType<TableBase.RowProps>;
+  /** A component that renders a filter selector. */
+  filterSelectorComponent?: React.ComponentType<TableFilterRowBase.FilterSelectorProps>;
+  /** A component that renders filter selector icons. */
+  iconComponent?: React.ComponentType<TableFilterRowBase.IconProps>;
+  /** A component that renders a filter editor. */
+  editorComponent?: React.ComponentType<TableFilterRowBase.EditorProps>;
+  /** Specifies whether the FilterSelector should be displayed. */
+  showFilterSelector?: boolean;
   /** The filter row's height. */
   rowHeight?: number;
   /** An object that specifies localization messages. */
@@ -349,6 +357,12 @@ export declare const TableFilterRow: React.ComponentType<TableFilterRowProps> & 
   Cell: React.ComponentType<TableFilterRowBase.CellProps & { className?: string; style?: React.CSSProperties; [x: string]: any }>;
   /** A component that renders a filter row. */
   Row: React.ComponentType<TableBase.RowProps & { className?: string; style?: React.CSSProperties; [x: string]: any }>;
+  /** A component that renders a filter selector. */
+  FilterSelector: React.ComponentType<TableFilterRowBase.FilterSelectorProps & { className?: string; style?: React.CSSProperties; [x: string]: any }>;
+  /** A component that renders filter selector icons. */
+  Icon: React.ComponentType<TableFilterRowBase.IconProps & { className?: string; style?: React.CSSProperties; [x: string]: any }>;
+  /** A component that renders a filter editor. */
+  Editor: React.ComponentType<TableFilterRowBase.EditorProps & { className?: string; style?: React.CSSProperties; [x: string]: any }>;
 };
 
 // -------------------------------------------------------------------------------------------------
@@ -610,7 +624,7 @@ import {
 
 export interface VirtualTableProps {
   /** The virtual table's height. */
-  height?: number;
+  height?: number | string;
   /** Estimated row height. Specify the average value for a table whose rows have different heights. */
   estimatedRowHeight?: number;
   /** Additional column properties that the plugin can handle. */

@@ -3,6 +3,7 @@
 2. copy to this branch (grid-material-ui)
 3. change columnTitle decalartion on all files:
  3.1. columnTitle: string.isRequired, => columnTitle: oneOfType([object.isRequired, string.isRequired]),
+ 	  columnTitle: PropTypes.string.isRequired => columnTitle: oneOfType([object.isRequired, string.isRequired])
  3.1. defaultProps => columnTitle: ''
 
 # DevExtreme React Grid Material UI
